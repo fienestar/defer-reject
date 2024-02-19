@@ -1,0 +1,48 @@
+{
+    "name": "defer-reject",
+    "version": "1.0.0",
+    "description": "Defer rejection explicitly until a catch handler is attached.",
+    "main": "lib/index.js",
+    "files": [
+        "lib/**/*"
+    ],
+    "lint-staged": {
+        "*.ts": [
+            "eslint . --fix"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "scripts": {
+        "build": "tsc"
+    },
+    "repository": "git+https://github.com/fienestar/defer-reject.git",
+    "author": "fienestar",
+    "license": "MIT",
+    "keywords": [
+        "promise",
+        "unhandled",
+        "uncaught",
+        "defer",
+        "rejection",
+        "catch",
+        "throw",
+        "async",
+        "async-await",
+        "try-catch",
+        "error-handling"
+    ],
+    "bugs": {
+        "url": "https://github.com/fienestar/defer-reject/issues"
+    },
+    "homepage": "https://github.com/fienestar/defer-reject#readme",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^7.0.2",
+        "@typescript-eslint/parser": "^7.0.2",
+        "eslint-config-google": "^0.14.0",
+        "typescript": "^5.3.3"
+    }
+}
