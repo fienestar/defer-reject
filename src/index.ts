@@ -34,18 +34,21 @@ export class RejectDeferredPromise<T> extends Promise<T> {
         onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | null | undefined,
         onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined,
     ): Promise<TResult1 | TResult2> {
-        if (onrejected !== undefined) {
+        const result = super.then(onfulfilled, onrejected);
+        if (onrejected !== undefined && onrejected !== null) {
             this.#unlock();
         }
 
-        return super.then(onfulfilled, onrejected);
+        return result;
     }
 
     catch<TResult = never>(
         onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | null | undefined,
     ): Promise<T | TResult> {
+        const result = super.catch(onrejected);
         this.#unlock();
-        return super.catch(onrejected);
+
+        return result;
     }
 }
 
